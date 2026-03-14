@@ -2,7 +2,11 @@ import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema({
   telegramId: { type: Number, required: true, unique: true },
-  username: String,
+  username: { 
+  type: String, 
+  unique: true, 
+  sparse: true 
+},
   firstName: String,
   preferences: {
     language: { type: String, default: 'en' }, // 'ar', 'bn', 'en'

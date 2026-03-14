@@ -4,3 +4,7 @@
 2026-03-14 08:18:22 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
 2026-03-14 08:18:46 [ERROR]: Service Error (syncUser): Plan executor error during findAndModify :: caused by :: E11000 duplicate key error collection: Agent.users index: username_1 dup key: { username: null }
 2026-03-14 08:18:46 [ERROR]: Controller Error (handleStart): Plan executor error during findAndModify :: caused by :: E11000 duplicate key error collection: Agent.users index: username_1 dup key: { username: null }
+2026-03-14 08:25:24 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-14 08:25:35 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-01.acucsu1.mongodb.net
+2026-03-14 08:26:47 [INFO]: User 7440378545 initialized the bot.
+2026-03-14 08:38:35 [INFO]: ⚡ Latency: 0ms | User: 7440378545
