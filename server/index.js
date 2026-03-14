@@ -3,10 +3,14 @@ import { Telegraf } from 'telegraf';
 import connectDB from './infrastructure/db.js';
 import logger from './infrastructure/logger.js';
 
+import * as botController from './controllers/botController.js';
+
 connectDB();
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
-
+//console.log(bot);
+// --- ROUTES / COMMANDS ---
+bot.start(botController.handleStart);
 // 3. Performance Middleware (Tracks API Latency)
 bot.use(async (ctx, next) => {
   const start = Date.now();

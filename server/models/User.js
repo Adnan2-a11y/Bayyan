@@ -1,0 +1,16 @@
+import mongoose from 'mongoose';
+
+const userSchema = new mongoose.Schema({
+  telegramId: { type: Number, required: true, unique: true },
+  username: String,
+  firstName: String,
+  preferences: {
+    language: { type: String, default: 'en' }, // 'ar', 'bn', 'en'
+    lastSurah: { type: Number, default: 1 },
+    lastAyah: { type: Number, default: 1 }
+  },
+  isPremium: { type: Boolean, default: false }, // For your Agency/Freelance model
+  createdAt: { type: Date, default: Date.now }
+});
+
+export default mongoose.model('User', userSchema);

@@ -1,0 +1,6 @@
+2026-03-13 22:06:19 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-02.acucsu1.mongodb.net
+2026-03-13 22:07:04 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-13 22:16:19 [INFO]: ⚡ Latency: 4ms | User: 7440378545
+2026-03-14 08:18:22 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-14 08:18:46 [ERROR]: Service Error (syncUser): Plan executor error during findAndModify :: caused by :: E11000 duplicate key error collection: Agent.users index: username_1 dup key: { username: null }
+2026-03-14 08:18:46 [ERROR]: Controller Error (handleStart): Plan executor error during findAndModify :: caused by :: E11000 duplicate key error collection: Agent.users index: username_1 dup key: { username: null }
