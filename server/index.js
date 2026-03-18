@@ -11,6 +11,8 @@ const bot = new Telegraf(process.env.BOT_TOKEN);
 //console.log(bot);
 // --- ROUTES / COMMANDS ---
 bot.start(botController.handleStart);
+// 1. ATTACH ERROR HANDLER FIRST
+bot.catch(globalErrorHandler);
 // 3. Performance Middleware (Tracks API Latency)
 bot.use(async (ctx, next) => {
   const start = Date.now();
