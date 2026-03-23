@@ -8,3 +8,64 @@
 2026-03-14 08:25:35 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-01.acucsu1.mongodb.net
 2026-03-14 08:26:47 [INFO]: User 7440378545 initialized the bot.
 2026-03-14 08:38:35 [INFO]: ⚡ Latency: 0ms | User: 7440378545
+2026-03-19 11:55:57 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-02.acucsu1.mongodb.net
+2026-03-23 19:44:44 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-02.acucsu1.mongodb.net
+2026-03-23 19:45:09 [INFO]: User 7440378545 initialized the bot.
+2026-03-23 20:04:43 [ERROR]: FATAL: Bot Launch Failed: request to https://api.telegram.org/bot8553567384:[REDACTED]/getMe failed, reason: getaddrinfo EAI_AGAIN api.telegram.org
+2026-03-23 20:05:16 [ERROR]: ❌ DB Error: querySrv ETIMEOUT _mongodb._tcp.cluster0.acucsu1.mongodb.net
+2026-03-23 20:11:04 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-02.acucsu1.mongodb.net
+2026-03-23 20:11:08 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-23 20:18:21 [ERROR]: FATAL: Bot Launch Failed: request to https://api.telegram.org/bot8553567384:[REDACTED]/getMe failed, reason: 
+2026-03-23 20:18:31 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-02.acucsu1.mongodb.net
+2026-03-23 20:19:16 [ERROR]: FATAL: Bot Launch Failed: request to https://api.telegram.org/bot8553567384:[REDACTED]/getMe failed, reason: 
+2026-03-23 20:19:19 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-23 20:19:22 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-23 20:19:28 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-23 20:19:29 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-01.acucsu1.mongodb.net
+2026-03-23 20:20:02 [INFO]: User 7440378545 initialized the bot.
+2026-03-23 20:20:02 [INFO]: ⚡ Latency: 540ms | User: 7440378545
+2026-03-23 20:20:35 [INFO]: ⚡ Latency: 1ms | User: 7440378545
+2026-03-23 20:20:40 [INFO]: ⚡ Latency: 354ms | User: 7440378545
+2026-03-23 20:20:45 [INFO]: ⚡ Latency: 384ms | User: 7440378545
+2026-03-23 20:20:52 [INFO]: ⚡ Latency: 1ms | User: 7440378545
+2026-03-23 20:21:41 [ERROR]: Quran API Error: Request failed with status code 404
+2026-03-23 20:21:41 [INFO]: ⚡ Latency: 592ms | User: 7440378545
+2026-03-23 20:26:45 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-23 20:27:03 [INFO]: ⚡ Latency: 840ms | User: 7440378545
+2026-03-23 20:36:56 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-23 20:37:02 [ERROR]: FATAL: Bot Launch Failed: request to https://api.telegram.org/bot8553567384:[REDACTED]/getMe failed, reason: 
+2026-03-23 20:37:02 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-02.acucsu1.mongodb.net
+2026-03-23 20:37:15 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-23 20:37:31 [INFO]: ⚡ Latency: 523ms | User: 7440378545
+2026-03-23 20:39:04 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-01.acucsu1.mongodb.net
+2026-03-23 20:39:15 [INFO]: ⚡ Latency: 535ms | User: 7440378545
+2026-03-23 20:55:52 [ERROR]: FATAL: Bot Launch Failed: request to https://api.telegram.org/bot8553567384:[REDACTED]/getMe failed, reason: 
+2026-03-23 20:55:53 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-23 20:56:35 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-02.acucsu1.mongodb.net
+2026-03-23 20:56:36 [INFO]: ⚡ Latency: 1318ms | User: 7440378545
+2026-03-23 21:10:26 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-01.acucsu1.mongodb.net
+2026-03-23 21:11:54 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-01.acucsu1.mongodb.net
+2026-03-23 21:12:06 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-23 21:12:28 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-23 21:12:35 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-23 21:13:03 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-23 21:13:57 [ERROR]: FATAL: Bot Launch Failed: request to https://api.telegram.org/bot8553567384:[REDACTED]/getMe failed, reason: 
+2026-03-23 21:13:58 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-23 21:15:46 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-23 21:15:53 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-23 21:16:11 [INFO]: ⚡ Latency: 723ms | User: 7440378545
+2026-03-23 21:17:58 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-23 21:18:22 [ERROR]: Quran API Error: Request failed with status code 400
+2026-03-23 21:18:22 [INFO]: ⚡ Latency: 79ms | User: 7440378545
+2026-03-23 21:18:33 [INFO]: ⚡ Latency: 720ms | User: 7440378545
+2026-03-23 21:20:55 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-01.acucsu1.mongodb.net
+2026-03-23 21:20:58 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-01.acucsu1.mongodb.net
+2026-03-23 21:21:17 [INFO]: ⚡ Latency: 530ms | User: 7440378545
+2026-03-23 21:21:21 [INFO]: ⚡ Latency: 704ms | User: 7440378545
+2026-03-23 21:21:34 [INFO]: ⚡ Latency: 665ms | User: 7440378545
+2026-03-23 21:22:07 [INFO]: ⚡ Latency: 482ms | User: 7440378545
+2026-03-23 21:22:09 [INFO]: ⚡ Latency: 318ms | User: 7440378545
+2026-03-23 21:24:20 [ERROR]: ❌ DB Error: Socket 'secureConnect' timed out after 30045ms (connectTimeoutMS: 30000)
+2026-03-23 21:25:08 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-01.acucsu1.mongodb.net
+2026-03-23 21:27:01 [ERROR]: FATAL: Bot Launch Failed: request to https://api.telegram.org/bot8553567384:[REDACTED]/getMe failed, reason: 
+2026-03-23 21:27:01 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net

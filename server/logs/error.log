@@ -1,2 +1,13 @@
 2026-03-14 08:18:46 [ERROR]: Service Error (syncUser): Plan executor error during findAndModify :: caused by :: E11000 duplicate key error collection: Agent.users index: username_1 dup key: { username: null }
 2026-03-14 08:18:46 [ERROR]: Controller Error (handleStart): Plan executor error during findAndModify :: caused by :: E11000 duplicate key error collection: Agent.users index: username_1 dup key: { username: null }
+2026-03-23 20:04:43 [ERROR]: FATAL: Bot Launch Failed: request to https://api.telegram.org/bot8553567384:[REDACTED]/getMe failed, reason: getaddrinfo EAI_AGAIN api.telegram.org
+2026-03-23 20:05:16 [ERROR]: ❌ DB Error: querySrv ETIMEOUT _mongodb._tcp.cluster0.acucsu1.mongodb.net
+2026-03-23 20:18:21 [ERROR]: FATAL: Bot Launch Failed: request to https://api.telegram.org/bot8553567384:[REDACTED]/getMe failed, reason: 
+2026-03-23 20:19:16 [ERROR]: FATAL: Bot Launch Failed: request to https://api.telegram.org/bot8553567384:[REDACTED]/getMe failed, reason: 
+2026-03-23 20:21:41 [ERROR]: Quran API Error: Request failed with status code 404
+2026-03-23 20:37:02 [ERROR]: FATAL: Bot Launch Failed: request to https://api.telegram.org/bot8553567384:[REDACTED]/getMe failed, reason: 
+2026-03-23 20:55:52 [ERROR]: FATAL: Bot Launch Failed: request to https://api.telegram.org/bot8553567384:[REDACTED]/getMe failed, reason: 
+2026-03-23 21:13:57 [ERROR]: FATAL: Bot Launch Failed: request to https://api.telegram.org/bot8553567384:[REDACTED]/getMe failed, reason: 
+2026-03-23 21:18:22 [ERROR]: Quran API Error: Request failed with status code 400
+2026-03-23 21:24:20 [ERROR]: ❌ DB Error: Socket 'secureConnect' timed out after 30045ms (connectTimeoutMS: 30000)
+2026-03-23 21:27:01 [ERROR]: FATAL: Bot Launch Failed: request to https://api.telegram.org/bot8553567384:[REDACTED]/getMe failed, reason: 
