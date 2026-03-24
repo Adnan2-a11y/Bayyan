@@ -44,3 +44,17 @@ export const fetchAyah = async (surahId, verseId, lang = 'en') => {
     throw new Error("Ayah not found.");
   }
 };
+
+// Fetch an entire Surah (114 verses at once)
+export const fetchFullSurah = async (surahId, lang = 'en') => {
+  try {
+    const response = await axios.get(`${BASE_URL}/surah/${surahId}`, {
+      params: { lang }
+    });
+    console.log('Surah Response:',response.data);
+    return response.data; // Returns { id, name, translation, verses: [] }
+  } catch (error) {
+    logger.error(`Surah API Error: ${error.message}`);
+    throw new Error("Could not load the Surah. Please ensure ID is 1-114.");
+  }
+};

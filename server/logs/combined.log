@@ -69,3 +69,43 @@
 2026-03-23 21:25:08 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-01.acucsu1.mongodb.net
 2026-03-23 21:27:01 [ERROR]: FATAL: Bot Launch Failed: request to https://api.telegram.org/bot8553567384:[REDACTED]/getMe failed, reason: 
 2026-03-23 21:27:01 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-23 21:32:41 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-02.acucsu1.mongodb.net
+2026-03-23 21:33:39 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-23 21:33:49 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-01.acucsu1.mongodb.net
+2026-03-23 21:33:52 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-23 21:35:24 [INFO]: User 7440378545 initialized the bot.
+2026-03-23 21:35:24 [INFO]: ⚡ Latency: 462ms | Update: message | User: 7440378545
+2026-03-23 21:35:34 [INFO]: ⚡ Latency: 1ms | Update: callback_query | User: 7440378545
+2026-03-23 21:35:59 [INFO]: ⚡ Latency: 572ms | Update: message | User: 7440378545
+2026-03-23 21:36:03 [INFO]: ⚡ Latency: 843ms | Update: callback_query | User: 7440378545
+2026-03-23 21:43:34 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-01.acucsu1.mongodb.net
+2026-03-23 21:46:52 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-23 21:50:40 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-23 21:51:10 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-02.acucsu1.mongodb.net
+2026-03-23 21:52:01 [INFO]: ⚡ Latency: 638ms | Update: message | User: 7440378545
+2026-03-23 22:03:24 [INFO]: ⚡ Latency: 816ms | Update: callback_query | User: 7440378545
+2026-03-23 22:04:30 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-02.acucsu1.mongodb.net
+2026-03-24 19:13:04 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-01.acucsu1.mongodb.net
+2026-03-24 19:13:04 [INFO]: ⚡ Latency: 345ms | Update: message | User: 7440378545
+2026-03-24 19:13:24 [INFO]: ⚡ Latency: 1254ms | Update: message | User: 7440378545
+2026-03-24 19:13:34 [INFO]: ⚡ Latency: 6378ms | Update: callback_query | User: 7440378545
+2026-03-24 19:13:37 [INFO]: ⚡ Latency: 755ms | Update: callback_query | User: 7440378545
+2026-03-24 19:18:59 [INFO]: ⚡ Latency: 589ms | Update: message | User: 7440378545
+2026-03-24 19:23:54 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-01.acucsu1.mongodb.net
+2026-03-24 19:23:56 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-02.acucsu1.mongodb.net
+2026-03-24 19:23:58 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-01.acucsu1.mongodb.net
+2026-03-24 19:24:00 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-01.acucsu1.mongodb.net
+2026-03-24 19:24:04 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-24 19:24:17 [INFO]: ⚡ Latency: 457ms | Update: message | User: 7440378545
+2026-03-24 19:28:32 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-01.acucsu1.mongodb.net
+2026-03-24 19:29:16 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-24 19:30:14 [INFO]: ⚡ Latency: 521ms | Update: message | User: 7440378545
+2026-03-24 19:30:22 [INFO]: ⚡ Latency: 1ms | Update: callback_query | User: 7440378545
+2026-03-24 19:40:56 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-02.acucsu1.mongodb.net
+2026-03-24 19:41:04 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-02.acucsu1.mongodb.net
+2026-03-24 19:51:45 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-02.acucsu1.mongodb.net
+2026-03-24 19:52:06 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-02.acucsu1.mongodb.net
+2026-03-24 19:52:16 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-24 19:52:35 [INFO]: ⚡ Latency: 574ms | Update: message | User: 7440378545
+2026-03-24 19:52:39 [INFO]: ⚡ Latency: 368ms | Update: callback_query | User: 7440378545
+2026-03-24 19:53:16 [INFO]: 📴 SIGINT received. Shutting down gracefully...
