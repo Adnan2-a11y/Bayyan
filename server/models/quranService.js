@@ -30,40 +30,25 @@ export const fetchAyah = async (surahId, verseId, lang = 'en') => {
 export const fetchFullSurah = async (surahId, lang = 'en') => {
   const cacheKey = `quran:surah:${surahId}:${lang}`;
 
-  // 1. Level 1: Check Redis (Cache)
+  // 1. Level 1: REDIS (Speed)
   const cached = await redisClient.get(cacheKey);
   if (cached) return JSON.parse(cached);
 
-  // 2. Level 2: Check MongoDB (Persistence)
+  // 2. Level 2: MONGODB (Persistence)
   let surahData = await Surah.findOne({ id: surahId, language: lang });
 
   if (!surahData) {
-    // 3. Level 3: Fetch API (First time only)
+    // 3. Level 3: API (Last Resort)
     const response = await axios.get(`${BASE_URL}/surah/${surahId}`, { params: { lang } });
-    const apiData = response.data;
-    // Transform API response to match Surah schema
-    surahData = {
-      id: apiData.id,
-      language: lang,
-      name: apiData.name,
-      transliteration: apiData.transliteration,
-      translation: apiData.translation,
-      type: apiData.type,
-      total_verses: apiData.total_verses,
-      audio: apiData.audio, // Ensure this is a Map of AudioSchema objects
-      verses: Array.isArray(apiData.verses) ? apiData.verses.map(v => ({
-        id: v.id,
-        text: v.text,
-        translation: v.translation
-      })) : [],
-    };
-
-    // Save to Database so we never call API for this again
-    await Surah.create(surahData).catch(err => logger.error("DB Save Error:", err));
+    surahData = response.data;
+    
+    // Save to MongoDB for the future
+    await Surah.create(surahData).catch(err => console.error("DB Save Error:", err));
   }
 
-  // Sync to Redis for fast future access
+  // Sync back to Redis for next time (Expire in 24h)
   await redisClient.setEx(cacheKey, 86400, JSON.stringify(surahData));
+
   return surahData;
 };
 export const searchAyah = async (query) => {

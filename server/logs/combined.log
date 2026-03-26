@@ -109,3 +109,120 @@
 2026-03-24 19:52:35 [INFO]: ⚡ Latency: 574ms | Update: message | User: 7440378545
 2026-03-24 19:52:39 [INFO]: ⚡ Latency: 368ms | Update: callback_query | User: 7440378545
 2026-03-24 19:53:16 [INFO]: 📴 SIGINT received. Shutting down gracefully...
+2026-03-25 09:20:02 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-02.acucsu1.mongodb.net
+2026-03-25 09:21:10 [INFO]: ⚡ Latency: 1ms | Update: inline_query | User: 7440378545
+2026-03-25 09:23:24 [ERROR]: Service Error (syncUser): Plan executor error during findAndModify :: caused by :: E11000 duplicate key error collection: Agent.users index: email_1 dup key: { email: null }
+2026-03-25 09:23:24 [ERROR]: Controller Error (handleStart): Plan executor error during findAndModify :: caused by :: E11000 duplicate key error collection: Agent.users index: email_1 dup key: { email: null }
+2026-03-25 09:23:24 [INFO]: ⚡ Latency: 458ms | Update: message | User: 1367920599
+2026-03-25 09:23:49 [INFO]: ⚡ Latency: 604ms | Update: message | User: 1367920599
+2026-03-25 09:23:59 [INFO]: ⚡ Latency: 557ms | Update: message | User: 1367920599
+2026-03-25 09:24:06 [INFO]: ⚡ Latency: 736ms | Update: callback_query | User: 1367920599
+2026-03-26 20:23:48 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-26 20:24:10 [INFO]: User 7440378545 initialized the bot.
+2026-03-26 20:24:10 [INFO]: ⚡ Latency: 487ms | Update: message | User: 7440378545
+2026-03-26 20:24:33 [INFO]: ⚡ Latency: 2991ms | Update: message | User: 7440378545
+2026-03-26 20:28:15 [INFO]: ⚡ Latency: 441ms | Update: callback_query | User: 7440378545
+2026-03-26 20:30:16 [INFO]: 📴 SIGINT received. Shutting down gracefully...
+2026-03-26 20:47:49 [INFO]: ✅ Redis: Connected
+2026-03-26 20:47:50 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-02.acucsu1.mongodb.net
+2026-03-26 21:00:17 [INFO]: ✅ Redis: Connected
+2026-03-26 21:00:17 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-02.acucsu1.mongodb.net
+2026-03-26 21:00:21 [INFO]: ⚡ Latency: 516ms | Update: message | User: 7440378545
+2026-03-26 21:04:38 [INFO]: ✅ Redis: Connected
+2026-03-26 21:04:38 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-26 21:04:41 [INFO]: ✅ Redis: Connected
+2026-03-26 21:04:42 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-01.acucsu1.mongodb.net
+2026-03-26 21:05:25 [INFO]: ✅ Redis: Connected
+2026-03-26 21:05:25 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-02.acucsu1.mongodb.net
+2026-03-26 21:05:36 [INFO]: ✅ Redis: Connected
+2026-03-26 21:05:36 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-26 21:05:48 [INFO]: ✅ Redis: Connected
+2026-03-26 21:05:48 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-01.acucsu1.mongodb.net
+2026-03-26 21:06:46 [INFO]: ✅ Redis: Connected
+2026-03-26 21:06:46 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-26 21:06:49 [INFO]: ✅ Redis: Connected
+2026-03-26 21:06:50 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-26 21:07:03 [INFO]: ✅ Redis: Connected
+2026-03-26 21:07:04 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-02.acucsu1.mongodb.net
+2026-03-26 21:08:17 [INFO]: ✅ Redis: Connected
+2026-03-26 21:08:17 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-01.acucsu1.mongodb.net
+2026-03-26 21:08:20 [INFO]: ✅ Redis: Connected
+2026-03-26 21:08:21 [INFO]: ✅ Redis: Connected
+2026-03-26 21:08:21 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-01.acucsu1.mongodb.net
+2026-03-26 21:08:36 [INFO]: ✅ Redis: Connected
+2026-03-26 21:08:37 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-26 21:08:39 [INFO]: ✅ Redis: Connected
+2026-03-26 21:08:39 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-26 21:11:19 [INFO]: ✅ Redis: Connected
+2026-03-26 21:11:20 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-26 21:11:54 [INFO]: ✅ Redis: Connected
+2026-03-26 21:11:55 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-26 21:12:13 [INFO]: ✅ Redis: Connected
+2026-03-26 21:12:14 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-26 21:12:40 [INFO]: ✅ Redis: Connected
+2026-03-26 21:12:40 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-02.acucsu1.mongodb.net
+2026-03-26 21:12:58 [INFO]: ⚡ Latency: 1651ms | Update: callback_query | User: 7440378545
+2026-03-26 21:19:52 [INFO]: ⚡ Latency: 1150ms | Update: message | User: 7440378545
+2026-03-26 21:20:00 [INFO]: ⚡ Latency: 0ms | Update: callback_query | User: 7440378545
+2026-03-26 21:21:49 [INFO]: ✅ Redis: Connected
+2026-03-26 21:21:49 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-26 21:21:52 [INFO]: ✅ Redis: Connected
+2026-03-26 21:21:53 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-01.acucsu1.mongodb.net
+2026-03-26 21:22:02 [INFO]: ⚡ Latency: 0ms | Update: callback_query | User: 7440378545
+2026-03-26 21:24:20 [INFO]: ⚡ Latency: 4060ms | Update: message | User: 7440378545
+2026-03-26 21:25:58 [INFO]: ⚡ Latency: 559ms | Update: message | User: 7440378545
+2026-03-26 21:26:06 [INFO]: ⚡ Latency: 4234ms | Update: callback_query | User: 7440378545
+2026-03-26 21:27:35 [INFO]: ✅ Redis: Connected
+2026-03-26 21:27:35 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-02.acucsu1.mongodb.net
+2026-03-26 21:27:37 [INFO]: ✅ Redis: Connected
+2026-03-26 21:27:38 [INFO]: ✅ Redis: Connected
+2026-03-26 21:27:40 [INFO]: ✅ Redis: Connected
+2026-03-26 21:27:40 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-26 21:27:49 [INFO]: ⚡ Latency: 424ms | Update: message | User: 7440378545
+2026-03-26 21:27:52 [INFO]: ⚡ Latency: 712ms | Update: callback_query | User: 7440378545
+2026-03-26 21:32:15 [INFO]: ⚡ Latency: 897ms | Update: message | User: 7440378545
+2026-03-26 21:32:17 [INFO]: ⚡ Latency: 0ms | Update: callback_query | User: 7440378545
+2026-03-26 21:32:45 [INFO]: ✅ Redis: Connected
+2026-03-26 21:32:46 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-01.acucsu1.mongodb.net
+2026-03-26 21:34:09 [INFO]: ✅ Redis: Connected
+2026-03-26 21:34:09 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-02.acucsu1.mongodb.net
+2026-03-26 21:35:31 [INFO]: ✅ Redis: Connected
+2026-03-26 21:35:31 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-02.acucsu1.mongodb.net
+2026-03-26 21:35:47 [INFO]: ✅ Redis: Connected
+2026-03-26 21:35:47 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-26 21:36:12 [INFO]: ✅ Redis: Connected
+2026-03-26 21:36:13 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-26 21:36:25 [INFO]: ✅ Redis: Connected
+2026-03-26 21:36:28 [INFO]: ✅ Redis: Connected
+2026-03-26 21:36:29 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-02.acucsu1.mongodb.net
+2026-03-26 21:37:12 [INFO]: ⚡ Latency: 643ms | Update: message | User: 7440378545
+2026-03-26 21:37:16 [INFO]: ⚡ Latency: 1ms | Update: callback_query | User: 7440378545
+2026-03-26 21:39:28 [INFO]: ✅ Redis: Connected
+2026-03-26 22:08:00 [INFO]: ✅ Redis: Connected
+2026-03-26 22:08:00 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-26 22:08:12 [INFO]: ⚡ Latency: 1448ms | Update: message | User: 7440378545
+2026-03-26 22:10:04 [INFO]: ✅ Redis: Connected
+2026-03-26 22:10:04 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-26 22:10:15 [INFO]: ⚡ Latency: 347ms | Update: message | User: 7440378545
+2026-03-26 22:10:21 [INFO]: ⚡ Latency: 867ms | Update: message | User: 7440378545
+2026-03-26 22:21:14 [INFO]: ✅ Redis: Connected
+2026-03-26 22:21:14 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-26 22:21:42 [INFO]: ⚡ Latency: 694ms | Update: message | User: 7440378545
+2026-03-26 22:22:17 [INFO]: ✅ Redis: Connected
+2026-03-26 22:22:17 [ERROR]: ❌ FATAL: Bot Launch Failed
+2026-03-26 22:22:33 [INFO]: ✅ Redis: Connected
+2026-03-26 22:22:33 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-26 22:22:40 [INFO]: ⚡ Latency: 678ms | Update: message | User: 7440378545
+2026-03-26 22:23:07 [INFO]: ✅ Redis: Connected
+2026-03-26 22:23:08 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-26 22:23:12 [INFO]: ⚡ Latency: 658ms | Update: message | User: 7440378545
+2026-03-26 22:23:37 [INFO]: ✅ Redis: Connected
+2026-03-26 22:23:37 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-01.acucsu1.mongodb.net
+2026-03-26 22:25:05 [INFO]: ✅ Redis: Connected
+2026-03-26 22:25:05 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-26 22:25:18 [INFO]: ✅ Redis: Connected
+2026-03-26 22:25:19 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-26 22:25:25 [INFO]: ⚡ Latency: 640ms | Update: message | User: 7440378545
+2026-03-26 22:25:49 [INFO]: ⚡ Latency: 1218ms | Update: message | User: 7440378545
+2026-03-26 22:26:48 [INFO]: ✅ Redis: Connected
+2026-03-26 22:26:48 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-02.acucsu1.mongodb.net

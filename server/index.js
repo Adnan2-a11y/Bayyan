@@ -3,13 +3,14 @@ import { Telegraf } from 'telegraf';
 import connectDB from './infrastructure/db.js';
 import logger from './infrastructure/logger.js';
 import { asyncHandler } from './infrastructure/errorHandler.js';
-import axios from 'axios';
+import { connectRedis } from './infrastructure/redis.js';
 
 import * as botController from './controllers/botController.js';
 import * as quranController from './controllers/quranController.js';
 
 
 connectDB();
+await connectRedis();
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
@@ -51,31 +52,7 @@ bot.command('read', asyncHandler(quranController.handleReadAyah));
 bot.command('surah', asyncHandler(quranController.handleFullSurah)); // NEW
 
 // ========== AUTO-SUGGESTION (INLINE MODE) ==========
-// Enable this in @BotFather first!
-bot.on('inline_query', asyncHandler(async (ctx) => {
-  const query = ctx.inlineQuery.query;
-  if (query.length < 3) return; // Docs require min 3 chars
-
-  const response = await axios.get(`https://alquran-api.pages.dev`, {
-    params: { q: query }
-  });
-
-  const results = response.data.results.slice(0, 8).map((res) => ({
-    type: 'article',
-    id: `${res.surah.id}:${res.verses.id}`,
-    title: `${res.surah.transliteration} ${res.surah.id}:${res.verses.id}`,
-    description: res.verses.translation,
-    input_message_content: {
-      message_text: `📖 *${res.surah.transliteration} (${res.surah.id}:${res.verses.id})*\n\n` +
-                    `${res.verses.text}\n\n` +
-                    `_${res.verses.translation}_`,
-      parse_mode: 'Markdown'
-    }
-  }));
-
-  await ctx.answerInlineQuery(results);
-}));
-
+bot.on('inline_query', asyncHandler(quranController.handleInlineQuery));
 // ========== ACTION HANDLERS (BUTTON CLICKS) ==========
 // Regex captures: audio_2_255 -> [2, 255]
 bot.action(/^audio_(\d+)_(\d+)$/, asyncHandler(quranController.handleAudioRequest));

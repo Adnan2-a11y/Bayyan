@@ -51,39 +51,7 @@ export const handleReadAyah = async (ctx) => {
   }
 };
 
-export const handleFullSurah = async (ctx) => {
-  try {
-    const surahId = ctx.message.text.split(' ')[1]; // "/surah 1"
-    if (!surahId || surahId < 1 || surahId > 114) return ctx.reply("Usage: /surah [1-114]");
 
-    const data = await quranService.fetchFullSurah(surahId);
-
-    // Header Message
-    const header = `📖 *Surah ${data.transliteration}* (${data.translation})\n` +
-                   `✨ Type: ${data.type} | Verses: ${data.total_verses}\n\n` +
-                   `_Showing Verses 1-10:_`;
-
-    // Format first 10 verses
-    const versesText = data.verses.slice(0, 10).map(v => 
-      `🔹 *${v.id}.* ${v.text}\n📖 _${v.translation}_`
-    ).join('\n\n');
-
-    const keyboard = {
-      inline_keyboard: [
-        [
-          { text: "Next 10 ➡️", callback_data: `surah_page_${surahId}_10` }
-        ]
-      ]
-    };
-
-    await ctx.reply(`${header}\n\n${versesText}`, {
-      parse_mode: 'Markdown',
-      reply_markup: keyboard
-    });
-  } catch (error) {
-    ctx.reply(error.message);
-  }
-};
 
 
 // Handles when user clicks "Play Audio"
@@ -143,24 +111,94 @@ export const handleLanguageChange = async (ctx) => {
   }
 };
 
-export const handleSurahPagination = async (ctx) => {
-  const [_, __, surahId, offset] = ctx.match; // e.g., surah_page_1_10
-  const start = parseInt(offset);
-  const end = start + 10;
 
-  const data = await quranService.fetchFullSurah(surahId);
+export const handleInlineQuery = async (ctx) => {
+  const query = ctx.inlineQuery.query;
+  if (query.length < 3) return;
+
+  const results = await quranService.searchAyah(query);
+
+  const telegramResults = results.map(res => ({
+    type: 'article',
+    id: res.id,
+    title: res.title,
+    description: res.translation,
+    input_message_content: {
+      message_text: `📖 *${res.title}*\n\n${res.text}\n\n_${res.translation}_`,
+      parse_mode: 'Markdown'
+    }
+  }));
+
+  await ctx.answerInlineQuery(telegramResults);
+};
+
+// HELPER: The "Renderer" that builds the message and buttons
+const renderSurahPage = async (surahId, offset = 0, lang = 'en') => {
+  const data = await quranService.fetchFullSurah(surahId, lang);
+  const limit = 10;
   const total = data.total_verses;
+  const verses = data.verses.slice(offset, offset + limit);
 
-  const versesText = data.verses.slice(start, end).map(v => 
+  // 1. Build Header with Audio Link (Reciter 1)
+  const audioUrl = data.audio['1']?.url || '';
+  let message = `📖 *Surah ${data.transliteration}* (${data.translation})\n`;
+  if (audioUrl) message += `🔊 [Listen to Full Surah](${audioUrl})\n`;
+  message += `✨ Verses: ${total} | Language: ${lang.toUpperCase()}\n\n`;
+
+  // 2. Format Verse List
+  const versesText = verses.map(v => 
     `🔹 *${v.id}.* ${v.text}\n📖 _${v.translation}_`
   ).join('\n\n');
 
-  const buttons = [];
-  if (start > 0) buttons.push({ text: "⬅️ Back", callback_data: `surah_page_${surahId}_${start - 10}` });
-  if (end < total) buttons.push({ text: "Next ➡️", callback_data: `surah_page_${surahId}_${end}` });
+  // 3. Build Intelligent Keyboard
+  const navRow = [];
+  if (offset > 0) 
+    navRow.push({ text: "⬅️ Back", callback_data: `s_pg:${surahId}:${offset - limit}:${lang}` });
+  if (offset + limit < total) 
+    navRow.push({ text: "Next ➡️", callback_data: `s_pg:${surahId}:${offset + limit}:${lang}` });
 
-  await ctx.editMessageText(`📖 *Surah ${data.transliteration}* (Verses ${start+1}-${Math.min(end, total)})\n\n${versesText}`, {
-    parse_mode: 'Markdown',
-    reply_markup: { inline_keyboard: [buttons] }
-  });
+  const langRow = [
+    { text: "🇧🇩 Bangla", callback_data: `s_pg:${surahId}:0:bn` },
+    { text: "🇬🇧 English", callback_data: `s_pg:${surahId}:0:en` }
+  ];
+
+  return {
+    text: `${message}${versesText}`,
+    keyboard: { inline_keyboard: [navRow, langRow] }
+  };
+};
+
+// 1. Initial Command Handler (/surah 1)
+export const handleFullSurah = async (ctx) => {
+  try {
+    const surahId = ctx.message.text.split(' ')[1];
+    if (!surahId || surahId < 1 || surahId > 114) {
+      return ctx.reply("Usage: /surah [1-114]");
+    }
+
+    const { text, keyboard } = await renderSurahPage(surahId, 0, 'en');
+    await ctx.reply(text, { parse_mode: 'Markdown', reply_markup: keyboard });
+  } catch (error) {
+    logger.error(`Surah Cmd Error: ${error.message}`);
+    ctx.reply("⚠️ Could not load Surah. Please check the ID (1-114).");
+  }
+};
+
+// 2. Action Handler (Pagination & Language Switch)
+export const handleSurahPagination = async (ctx) => {
+  try {
+    // Expected format: s_pg:surahId:offset:lang
+    const [_, surahId, offset, lang] = ctx.match;
+    
+    const { text, keyboard } = await renderSurahPage(surahId, parseInt(offset), lang);
+
+    await ctx.editMessageText(text, { 
+      parse_mode: 'Markdown', 
+      reply_markup: keyboard 
+    });
+    await ctx.answerCbQuery();
+  } catch (error) {
+    logger.error(`Surah Action Error: ${error.message}`);
+    await ctx.answerCbQuery("⚠️ Error loading page", { show_alert: true });
+  }
 };
