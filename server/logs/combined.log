@@ -243,3 +243,7 @@
 2026-03-29 22:33:00 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
 2026-03-29 23:16:55 [INFO]: ✅ Redis: Connected
 2026-03-29 23:16:56 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-00.acucsu1.mongodb.net
+2026-03-29 23:19:21 [INFO]: 🚀 Quran Worker Initialized & Listening
+2026-03-29 23:19:21 [INFO]: ✅ BullMQ Redis: Connected
+2026-03-29 23:19:21 [INFO]: ✅ Redis: Connected
+2026-03-29 23:19:21 [INFO]: ✅ MongoDB Connected: ac-3ow8uen-shard-00-02.acucsu1.mongodb.net

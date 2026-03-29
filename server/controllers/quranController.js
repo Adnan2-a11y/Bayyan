@@ -8,8 +8,8 @@ import { quranQueue } from '../jobs/quran.queue.js';
 const fetchAndFormatAyah = async (surah, ayah, lang = 'en') => {
   const data = await quranService.fetchAyah(surah, ayah, lang);
   const message = `✨ *${data.surahName} (${surah}:${ayah})* ✨\n\n` +
-                  `${data.arabic}\n\n` +
-                  `📖 _${data.translation}_`;
+    `${data.arabic}\n\n` +
+    `📖 _${data.translation}_`;
   const keyboard = {
     inline_keyboard: [
       [
@@ -46,7 +46,12 @@ export const handleReadAyah = async (ctx) => {
       { 'preferences.lastSurah': surah, 'preferences.lastAyah': ayah }
     ).catch(err => logger.warn(`Failed to update user preferences: ${err.message}`));
 
-    await ctx.reply(message, { parse_mode: 'Markdown', reply_markup: keyboard });
+    await quranQueue.add('send-ayah', {
+      type: 'SEND_MESSAGE',
+      chatId: ctx.chat?.id || ctx.from?.id,
+      message,
+      keyboard
+    });
   } catch (error) {
     logger.error(`Error in handleReadAyah: ${error.message}`);
     await ctx.reply(`⚠️ ${error.message || 'Failed to fetch Ayah. Please try again.'}`);
@@ -70,7 +75,11 @@ export const handleAudioRequest = async (ctx) => {
       return ctx.answerCbQuery('⚠️ Audio not available for this verse', { show_alert: true });
     }
 
-    await ctx.replyWithAudio(data.audioUrl);
+    await quranQueue.add('send-audio', {
+      type: 'SEND_AUDIO',
+      chatId: ctx.chat?.id || ctx.from?.id,
+      audioUrl: data.audioUrl
+    });
     await ctx.answerCbQuery();
   } catch (error) {
     logger.error(`Error in handleAudioRequest: ${error.message}`);
@@ -100,10 +109,13 @@ export const handleLanguageChange = async (ctx) => {
       { 'preferences.language': lang }
     ).catch(err => logger.warn(`Failed to update user language: ${err.message}`));
 
-    // Edit the existing message instead of sending new one
-    await ctx.editMessageText(message, {
-      parse_mode: 'Markdown',
-      reply_markup: keyboard
+    // Queue the message edit
+    await quranQueue.add('edit-language', {
+      type: 'EDIT_MESSAGE',
+      chatId: ctx.chat?.id || ctx.from?.id,
+      messageId: ctx.callbackQuery?.message?.message_id,
+      message,
+      keyboard
     });
 
     await ctx.answerCbQuery(`✓ Language: ${lang.toUpperCase()}`);
@@ -148,15 +160,15 @@ const renderSurahPage = async (surahId, offset = 0, lang = 'en') => {
   message += `✨ Verses: ${total} | Language: ${lang.toUpperCase()}\n\n`;
 
   // 2. Format Verse List
-  const versesText = verses.map(v => 
+  const versesText = verses.map(v =>
     `🔹 *${v.id}.* ${v.text}\n📖 _${v.translation}_`
   ).join('\n\n');
 
   // 3. Build Intelligent Keyboard
   const navRow = [];
-  if (offset > 0) 
+  if (offset > 0)
     navRow.push({ text: "⬅️ Back", callback_data: `s_pg:${surahId}:${offset - limit}:${lang}` });
-  if (offset + limit < total) 
+  if (offset + limit < total)
     navRow.push({ text: "Next ➡️", callback_data: `s_pg:${surahId}:${offset + limit}:${lang}` });
 
   const langRow = [
@@ -179,7 +191,12 @@ export const handleFullSurah = async (ctx) => {
     }
 
     const { text, keyboard } = await renderSurahPage(surahId, 0, 'en');
-    await ctx.reply(text, { parse_mode: 'Markdown', reply_markup: keyboard });
+    await quranQueue.add('send-surah', {
+      type: 'SEND_MESSAGE',
+      chatId: ctx.chat?.id || ctx.from?.id,
+      message: text,
+      keyboard
+    });
   } catch (error) {
     logger.error(`Surah Cmd Error: ${error.message}`);
     ctx.reply("⚠️ Could not load Surah. Please check the ID (1-114).");
@@ -191,12 +208,15 @@ export const handleSurahPagination = async (ctx) => {
   try {
     // Expected format: s_pg:surahId:offset:lang
     const [_, surahId, offset, lang] = ctx.match;
-    
+
     const { text, keyboard } = await renderSurahPage(surahId, parseInt(offset), lang);
 
-    await ctx.editMessageText(text, { 
-      parse_mode: 'Markdown', 
-      reply_markup: keyboard 
+    await quranQueue.add('edit-surah', {
+      type: 'EDIT_MESSAGE',
+      chatId: ctx.chat?.id || ctx.from?.id,
+      messageId: ctx.callbackQuery?.message?.message_id,
+      message: text,
+      keyboard
     });
     await ctx.answerCbQuery();
   } catch (error) {
