@@ -1,8 +1,8 @@
 import { Queue } from 'bullmq';
-import redisClient from '../infrastructure/redis.js';
+import bullConnection from '../infrastructure/bullConnection.js';
 
 export const quranQueue = new Queue('quran-tasks', {
-  connection: redisClient.options,
+  connection: bullConnection,
   defaultJobOptions: {
     attempts: 5,
     backoff: { type: 'exponential', delay: 2000 },

@@ -5,14 +5,16 @@ import logger from './infrastructure/logger.js';
 import { asyncHandler } from './infrastructure/errorHandler.js';
 import { connectRedis } from './infrastructure/redis.js';
 
+import bot from './infrastructure/telegram.js';
 import * as botController from './controllers/botController.js';
 import * as quranController from './controllers/quranController.js';
+import './jobs/quran.worker.js';
 
 
 connectDB();
 await connectRedis();
 
-const bot = new Telegraf(process.env.BOT_TOKEN);
+// Removed local bot initialization (now imported from infrastructure)
 
 // ========== MIDDLEWARE STACK ==========
 
