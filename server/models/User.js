@@ -17,4 +17,5 @@ const userSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
+userSchema.index({ telegramId: 1 },{unique: true}); // Ensure fast lookups by Telegram ID
 export default mongoose.model('User', userSchema);

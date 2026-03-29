@@ -1,6 +1,8 @@
 import * as quranService from '../services/quranService.js';
 import User from '../models/User.js';
 import logger from '../infrastructure/logger.js';
+import { catchAsync } from '../utils/catchAsync.js';
+import { quranQueue } from '../jobs/quran.queue.js';
 
 // Core Helper: Fetch and Format Ayah (Reusable Logic)
 const fetchAndFormatAyah = async (surah, ayah, lang = 'en') => {
