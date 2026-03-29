@@ -63,7 +63,7 @@ bot.action(/^audio_(\d+)_(\d+)$/, asyncHandler(quranController.handleAudioReques
 bot.action(/^lang_([a-z]{2})_(\d+)_(\d+)$/, asyncHandler(quranController.handleLanguageChange));
 
 // Add this inside the "ACTION HANDLERS" section of index.js
-bot.action(/^surah_page_(\d+)_(\d+)$/, asyncHandler(quranController.handleSurahPagination));
+bot.action(/^s_pg:(\d+):(\d+):([a-z]{2})$/, asyncHandler(quranController.handleSurahPagination));
 
 // ========== FALLBACK HANDLER ==========
 bot.on('message', async (ctx) => {

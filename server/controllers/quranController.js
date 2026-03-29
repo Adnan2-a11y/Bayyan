@@ -26,16 +26,21 @@ const fetchAndFormatAyah = async (surah, ayah, lang = 'en') => {
 
 export const handleReadAyah = async (ctx) => {
   try {
+    const usageMessage = `✨ *Read a specific Ayah*\n\nTo read a specific Ayah, please use the format \`/read <Surah>:<Ayah>\`.\n\n_Example:_\n\`/read 2:255\` (Ayatul Kursi)\n\n*Don't remember the exact reference?*\nClick the button below to search for an Ayah.`;
+    const usageKeyboard = {
+      inline_keyboard: [[{ text: "🔍 Search Ayah", switch_inline_query_current_chat: "" }]]
+    };
+
     if (!ctx.message || !ctx.message.text) {
-      return ctx.reply("⚠️ Invalid message format. Please use /read 2:255");
+      return ctx.reply(usageMessage, { parse_mode: 'Markdown', reply_markup: usageKeyboard });
     }
 
     const text = ctx.message.text.split(' ')[1]; // Expects "/read 2:255"
-    if (!text) return ctx.reply("Please provide a reference, e.g., /read 2:255");
+    if (!text) return ctx.reply(usageMessage, { parse_mode: 'Markdown', reply_markup: usageKeyboard });
 
     const [surah, ayah] = text.split(':');
     if (!surah || !ayah) {
-      return ctx.reply("⚠️ Invalid format. Use: /read 2:255");
+      return ctx.reply(usageMessage, { parse_mode: 'Markdown', reply_markup: usageKeyboard });
     }
 
     const { message, keyboard } = await fetchAndFormatAyah(surah, ayah);
@@ -149,7 +154,7 @@ export const handleInlineQuery = async (ctx) => {
 // HELPER: The "Renderer" that builds the message and buttons
 const renderSurahPage = async (surahId, offset = 0, lang = 'en') => {
   const data = await quranService.fetchFullSurah(surahId, lang);
-  const limit = 10;
+  const limit = 5;
   const total = data.total_verses;
   const verses = data.verses.slice(offset, offset + limit);
 
@@ -172,8 +177,8 @@ const renderSurahPage = async (surahId, offset = 0, lang = 'en') => {
     navRow.push({ text: "Next ➡️", callback_data: `s_pg:${surahId}:${offset + limit}:${lang}` });
 
   const langRow = [
-    { text: "🇧🇩 Bangla", callback_data: `s_pg:${surahId}:0:bn` },
-    { text: "🇬🇧 English", callback_data: `s_pg:${surahId}:0:en` }
+    { text: "🇧🇩 Bangla", callback_data: `s_pg:${surahId}:${offset}:bn` },
+    { text: "🇬🇧 English", callback_data: `s_pg:${surahId}:${offset}:en` }
   ];
 
   return {
@@ -185,9 +190,14 @@ const renderSurahPage = async (surahId, offset = 0, lang = 'en') => {
 // 1. Initial Command Handler (/surah 1)
 export const handleFullSurah = async (ctx) => {
   try {
+    const usageMessage = `📖 *Read the Holy Quran*\n\nTo read a complete Surah, type \`/surah\` followed by its number (1-114).\n\n_Example:_\n\`/surah 1\` (Al-Fatiha)\n\n*Or quickly search by name:*\nClick the button below to find a Surah instantly.`;
+    const usageKeyboard = {
+      inline_keyboard: [[{ text: "🔍 Search Surah", switch_inline_query_current_chat: "" }]]
+    };
+
     const surahId = ctx.message.text.split(' ')[1];
-    if (!surahId || surahId < 1 || surahId > 114) {
-      return ctx.reply("Usage: /surah [1-114]");
+    if (!surahId || isNaN(surahId) || surahId < 1 || surahId > 114) {
+      return ctx.reply(usageMessage, { parse_mode: 'Markdown', reply_markup: usageKeyboard });
     }
 
     const { text, keyboard } = await renderSurahPage(surahId, 0, 'en');
@@ -206,9 +216,9 @@ export const handleFullSurah = async (ctx) => {
 // 2. Action Handler (Pagination & Language Switch)
 export const handleSurahPagination = async (ctx) => {
   try {
-    // Expected format: s_pg:surahId:offset:lang
+    // Regex capture groups: 1=surahId, 2=offset, 3=lang
     const [_, surahId, offset, lang] = ctx.match;
-
+    
     const { text, keyboard } = await renderSurahPage(surahId, parseInt(offset), lang);
 
     await quranQueue.add('edit-surah', {
