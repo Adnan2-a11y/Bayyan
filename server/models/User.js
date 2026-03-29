@@ -16,6 +16,5 @@ const userSchema = new mongoose.Schema({
   isPremium: { type: Boolean, default: false }, // For your Agency/Freelance model
   createdAt: { type: Date, default: Date.now }
 });
-
-userSchema.index({ telegramId: 1 },{unique: true}); // Ensure fast lookups by Telegram ID
+ // Ensure fast lookups by Telegram ID
 export default mongoose.model('User', userSchema);
