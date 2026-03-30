@@ -51,7 +51,8 @@ bot.use(async (ctx, next) => {
 // ========== COMMAND HANDLERS ==========
 bot.start(asyncHandler(botController.handleStart));
 bot.command('read', asyncHandler(quranController.handleReadAyah));
-bot.command('surah', asyncHandler(quranController.handleFullSurah)); // NEW
+bot.command('surah', asyncHandler(quranController.handleFullSurah)); 
+bot.command('random', quranController.handleRandomAyah); // Wrapped in catchAsync within controller
 
 // ========== AUTO-SUGGESTION (INLINE MODE) ==========
 bot.on('inline_query', asyncHandler(quranController.handleInlineQuery));
@@ -64,6 +65,7 @@ bot.action(/^lang_([a-z]{2})_(\d+)_(\d+)$/, asyncHandler(quranController.handleL
 
 // Add this inside the "ACTION HANDLERS" section of index.js
 bot.action(/^surah_page_(\d+)_(\d+)$/, asyncHandler(quranController.handleSurahPagination));
+bot.action('random_ayah', quranController.handleRandomAyah); // Interactive "Next Random"
 
 // ========== FALLBACK HANDLER ==========
 bot.on('message', async (ctx) => {

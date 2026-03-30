@@ -5,11 +5,12 @@ import { catchAsync } from '../utils/catchAsync.js';
 import { quranQueue } from '../jobs/quran.queue.js';
 
 // Core Helper: Fetch and Format Ayah (Reusable Logic)
-const fetchAndFormatAyah = async (surah, ayah, lang = 'en') => {
+const fetchAndFormatAyah = async (surah, ayah, lang = 'en', isRandom = false) => {
   const data = await quranService.fetchAyah(surah, ayah, lang);
   const message = `✨ *${data.surahName} (${surah}:${ayah})* ✨\n\n` +
     `${data.arabic}\n\n` +
     `📖 _${data.translation}_`;
+  
   const keyboard = {
     inline_keyboard: [
       [
@@ -21,6 +22,12 @@ const fetchAndFormatAyah = async (surah, ayah, lang = 'en') => {
       ]
     ]
   };
+
+  // Add "Another Random" button if requested
+  if (isRandom) {
+    keyboard.inline_keyboard.push([{ text: "🎲 Another Random Ayah", callback_data: "random_ayah" }]);
+  }
+
   return { message, keyboard };
 };
 
@@ -224,3 +231,33 @@ export const handleSurahPagination = async (ctx) => {
     await ctx.answerCbQuery("⚠️ Error loading page", { show_alert: true });
   }
 };
+
+/**
+ * Handle /random command or "Another Random" button
+ */
+export const handleRandomAyah = catchAsync(async (ctx) => {
+  const telegramId = ctx.from.id;
+  const user = await User.findOne({ telegramId });
+  const lang = user?.preferences?.language || 'en';
+
+  const ayahData = await quranService.getRandomAyah(lang);
+  const { message, keyboard } = await fetchAndFormatAyah(
+    ayahData.surahId, 
+    ayahData.ayahNumber, 
+    lang, 
+    true
+  );
+
+  // Queue the message delivery (Professional Worker Pattern)
+  await quranQueue.add('send-random-ayah', {
+    type: ctx.callbackQuery ? 'EDIT_MESSAGE' : 'SEND_MESSAGE',
+    chatId: ctx.chat?.id || ctx.from?.id,
+    messageId: ctx.callbackQuery?.message?.message_id,
+    message,
+    keyboard
+  });
+
+  if (ctx.callbackQuery) {
+    await ctx.answerCbQuery("🎲 New verse loaded!");
+  }
+});
