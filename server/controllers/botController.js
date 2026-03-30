@@ -9,10 +9,11 @@ export const handleStart = async (ctx) => {
     // 2. Formatting: Professional Welcome Message
     const welcomeMsg = 
       `Assalamu Alaikum, ${user.firstName || 'Brother/Sister'}! 🌙\n\n` +
-      `Welcome to your **AI-Powered Islamic Assistant**.\n\n` +
-      `📖 **Quran:** Search by Surah:Ayah (e.g., 2:255)\n` +
-      `📜 **Hadith:** Ask about any topic (e.g., "patience")\n` +
-      `🤖 **AI:** Ask questions about Islamic rulings or history.`;
+      `*Welcome to Bayyan* — your AI-powered companion for spiritual growth.\n\n` +
+      `📖 *Quran*: Search Ayah (e.g., 2:255) or Surah (e.g., /surah 1)\n` +
+      `📜 *Hadith*: Ask about any topic (e.g., "patience")\n` +
+      `🤖 *AI Guide*: Ask questions about rulings or history\n\n` +
+      `💡 _Tip: Reach the commands anytime using the menu button below._`;
 
     // 3. UI: Interactive Menu (Inline Keyboards)
     await ctx.reply(welcomeMsg, {

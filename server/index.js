@@ -78,6 +78,13 @@ bot.on('message', async (ctx) => {
 });
 
 // ========== LAUNCHER & GRACEFUL SHUTDOWN ==========
+// Register Global Command Menu (Autocomplete Suggestions)
+bot.telegram.setMyCommands([
+  { command: 'start', description: '✨ Start your journey with Bayyan' },
+  { command: 'read', description: '📖 Read an Ayah (e.g. 2:255)' },
+  { command: 'surah', description: '📜 Read a full Surah (e.g. /surah 1)' }
+]).catch(err => logger.error(`Failed to register commands: ${err.message}`));
+
 bot.launch()
   .then(() => {
     logger.info('✅ 🚀 Bayyan Bot: ONLINE & OPERATIONAL');
