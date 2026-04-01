@@ -49,35 +49,14 @@ bot.use(async (ctx, next) => {
 });
 
 // ========== COMMAND HANDLERS ==========
-bot.start(asyncHandler(botController.handleStart));
-bot.command('read', asyncHandler(quranController.handleReadAyah));
-bot.command('surah', asyncHandler(quranController.handleFullSurah)); 
-bot.command('random', quranController.handleRandomAyah); // Wrapped in catchAsync within controller
+import { setupCommands } from './command/index.js';
+import { setupActions } from './actions/index.js';
+import { setupEvents } from './events/index.js';
 
-// ========== AUTO-SUGGESTION (INLINE MODE) ==========
-bot.on('inline_query', asyncHandler(quranController.handleInlineQuery));
-// ========== ACTION HANDLERS (BUTTON CLICKS) ==========
-// Regex captures: audio_2_255 -> [2, 255]
-bot.action(/^audio_(\d+)_(\d+)$/, asyncHandler(quranController.handleAudioRequest));
+await setupCommands(bot);
+await setupActions(bot);
+await setupEvents(bot);
 
-// Regex captures: lang_en_2_255 -> [en, 2, 255]
-bot.action(/^lang_([a-z]{2})_(\d+)_(\d+)$/, asyncHandler(quranController.handleLanguageChange));
-
-// Add this inside the "ACTION HANDLERS" section of index.js
-bot.action(/^surah_page_(\d+)_(\d+)$/, asyncHandler(quranController.handleSurahPagination));
-bot.action('random_ayah', quranController.handleRandomAyah); // Interactive "Next Random"
-
-// ========== FALLBACK HANDLER ==========
-bot.on('message', async (ctx) => {
-  try {
-    await ctx.reply(
-      "👋 Welcome! Use /read to search Quran (e.g., /read 2:255)\n" +
-      "For more features, click /start"
-    );
-  } catch (err) {
-    logger.error(`Error in fallback message handler: ${err.message}`);
-  }
-});
 
 // ========== LAUNCHER & GRACEFUL SHUTDOWN ==========
 bot.launch()

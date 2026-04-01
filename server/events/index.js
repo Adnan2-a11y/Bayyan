@@ -3,24 +3,24 @@ import path from 'path';
 import { pathToFileURL } from 'url';
 import logger from '../infrastructure/logger.js';
 
-export const setupActions = async (bot) => {
+export const setupEvents = async (bot) => {
   const currentDir = path.dirname(new URL(import.meta.url).pathname);
   const files = fs.readdirSync(currentDir).filter(file => file.endsWith('.js') && file !== 'index.js');
 
   for (const file of files) {
     try {
       const modulePath = pathToFileURL(path.join(currentDir, file)).href;
-      const { action, handler } = await import(modulePath);
+      const { event, handler } = await import(modulePath);
 
-      if (!action || !handler) {
-        logger.warn(`Skipping action ${file}: Missing 'action' or 'handler' export.`);
+      if (!event || !handler) {
+        logger.warn(`Skipping event ${file}: Missing 'event' or 'handler' export.`);
         continue;
       }
 
-      bot.action(action, handler);
-      logger.info(`✅ Registered action: ${action.toString()}`);
+      bot.on(event, handler);
+      logger.info(`✅ Registered event: ${event}`);
     } catch (error) {
-      logger.error(`❌ Failed to load action ${file}: ${error.message}`);
+      logger.error(`❌ Failed to load event ${file}: ${error.message}`);
     }
   }
 };
